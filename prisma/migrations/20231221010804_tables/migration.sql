@@ -1,11 +1,24 @@
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "username" TEXT NOT NULL COLLATE NOCASE,
+    "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "email" TEXT NOT NULL COLLATE NOCASE,
+    "email" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" DATETIME NOT NULL
+    "updated_at" DATETIME NOT NULL,
+    "app_text_version" INTEGER NOT NULL DEFAULT 1,
+    "app_layout_version" INTEGER NOT NULL DEFAULT 1,
+    "app_config_version" INTEGER NOT NULL DEFAULT 1
+);
+
+-- CreateTable
+CREATE TABLE "cdn" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "url" TEXT NOT NULL,
+    "status" TEXT NOT NULL,
+    "user_id" TEXT NOT NULL,
+    CONSTRAINT "cdn_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -42,6 +55,15 @@ CREATE TABLE "app_configs" (
     "proxy_port" INTEGER,
     "server_host" TEXT,
     "server_port" INTEGER,
+    "dnstt_key" TEXT,
+    "dnstt_name_server" TEXT,
+    "dnstt_server" TEXT,
+    "hy_obfs" TEXT,
+    "hy_insecure" BOOLEAN,
+    "hy_port" TEXT,
+    "hy_up_mbps" INTEGER,
+    "hy_down_mbps" INTEGER,
+    "hy_version" INTEGER,
     "sorter" INTEGER NOT NULL,
     "status" TEXT NOT NULL,
     "tls_version" TEXT,
