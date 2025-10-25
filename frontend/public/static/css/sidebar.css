@@ -84,6 +84,31 @@
   background-color: #121314cc;
 }
 
+.nav-sub-link {
+  background-color: #1a1b1dcc;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #FFF;
+  padding: 5px 10px 5px 9px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-sub-link:hover,
+.nav-sub-link:focus {
+  background-color: #1a1b1dcc;
+}
+
+.nav-sub-link i {
+  font-size: 15px !important;
+}
+
+.nav-sub-link.active {
+  background-color: #232527cc;
+}
+
 .img-rounded {
   border-radius: 50%;
 }

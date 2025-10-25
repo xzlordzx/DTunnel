@@ -4,7 +4,7 @@
 echo
 echo "Instale Com Usuário Root!"
 echo
-rm pinstall.sh
+rm -rf pinstall.sh
 exit 0
 }
 
@@ -29,8 +29,8 @@ exit 0
   cp .env painelbackup
   zip -r painelbackup.zip painelbackup
   mv painelbackup.zip /root
-  rm -r /etc/DTunnel
-  rm /root/pinstall.sh
+  rm -rf /etc/DTunnel
+  rm -rf /root/pinstall.sh
   echo "Removido com sucesso!"
   exit 0
   }
@@ -40,12 +40,13 @@ clear
 echo "Em Qual Porta Você Quer Ativar?"
 read porta
 echo
-echo "Intalando Painel Dtmod..."
+echo "Intalando Painel..."
 echo
 sleep 3
 #========================
 apt update -y
 apt-get update -y
+apt-get upgrade -y
 apt install wget -y
 apt install curl -y
 apt install zip -y
@@ -54,7 +55,7 @@ apt install unzip -y
 apt install screen -y
 apt install git -y
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash
-apt-get install -y nodejs -y
+apt-get install nodejs -y
 #=========================
 cd /etc/
 git clone https://github.com/xzlordzx/DTunnel.git
@@ -72,9 +73,10 @@ echo "CSRF_SECRET=\"$token1\"" >> .env
 echo "JWT_SECRET_KEY=\"$token2\"" >> .env
 echo "JWT_SECRET_REFRESH=\"$token3\"" >> .env
 npm install
+npm run build
 npx prisma generate
+npx prisma migrate deploy
 npx prisma migrate resolve --applied 20251018193643_database
-npx prisma migrate status
 npx prisma migrate deploy
 npx prisma db pull
 #=========================
@@ -85,4 +87,4 @@ echo "PAINEL DTUNNEL INSTALADO!"
 echo
 echo "Digite: pmenu"
 echo
-rm /root/pinstall.sh
+rm -rf /root/pinstall.sh

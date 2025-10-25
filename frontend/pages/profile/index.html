@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" translate="no" data-bs-theme="light">
+<html lang="pt-BR" translate="no" data-bs-theme="dark">
 
 <head>
   <base href="/" target="_blank">
@@ -7,7 +7,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="google" content="notranslate">
   <link rel="shortcut icon" href="/static/img/favicon.svg" />
-  <title>DTunnelMod - Profile</title>
+  <title>Perfil</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
@@ -42,14 +42,14 @@
                     <label for="id" class="form-label">ID</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-key-fill"></i>
-                      <input type="text" class="form-control" id="id" name="id" value="<%= it.user.id %>" readonly>
+                      <input type="text" class="form-control" id="id" name="id" value="<%= it.user.id %>" disabled>
                       <button class="input-group-text  border border-1" type="button" onclick="copyToken()">
                         <i class="bi bi-clipboard"></i>
                       </button>
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="username" class="form-label">Nome de usuário</label>
+                    <label for="username" class="form-label">Nome</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-person-fill"></i>
                       <input type="text" class="form-control" id="username" name="username" value="<%= it.user.username %>">
@@ -59,7 +59,7 @@
                     <label for="email" class="form-label">Email</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-envelope"></i>
-                      <input type="text" class="form-control" id="email" name="email" value="<%= it.user.email %>" readonly>
+                      <input type="text" class="form-control" id="email" name="email" value="<%= it.user.email %>" disabled>
                     </div>
                   </div>
                   <div class="mb-3">

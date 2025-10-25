@@ -100,32 +100,23 @@ class RegisterModalSuccess {
                     <div class="modal-body">
                         <div class="text-center">
                             <img src="https://cdn-icons-png.flaticon.com/512/1642/1642423.png" width="200" height="200">
-                            <p class="fs-2 text-success">Parabéns, conta registrada.</p>
+                            <p class="fs-2 text-success">Conta registrada.</p>
                         </div>
                         <div class="form-control bg-dark text-white __data" style="overflow-y: auto;">
                             <b>
-                                <p class="mb-2">💻 Usuário: <span class="__username"></span></p>
+                                <p class="mb-2">Email: <span class="__email"></span></p>
                             </b>
                             <b>
-                                <p class="mb-2">🔑 Senha: <span class="__password"></span></p>
+                                <p class="mb-2">Senha: <span class="__password"></span></p>
                             </b>
-                            <ul class="mt-4">
-                                <li>
-                                    Canal: <a href="https://t.me/DTunnelMod" class="text-reset">DTunnel</a>
-                                </li>
-                                <li>
-                                    Grupo: <a href="https://t.me/DTunnelModGroup" class="text-reset">DTunnelGroup</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex w-100 gap-3">
-                            <a href="${window.location.origin + '/login'}" class="flex-fill text-decoration-none">
-                            <button type="button" class="btn btn-dark w-100 border">LOGIN</button>
-                            </a>
                             <div class="flex-fill">
-                            <button type="button" data-bs-dismiss="modal" class="btn btn-dark w-100 border">FECHAR</button>
+							<a href="${window.location.origin + '/user'}" class="flex-fill text-decoration-none">
+                            <button type="button" class="btn btn-dark w-100 border">Fechar</button>
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -137,7 +128,7 @@ class RegisterModalSuccess {
     }
 
     setData(data) {
-        this.element.querySelector('.__username').innerHTML = data.username;
+        this.element.querySelector('.__email').innerHTML = data.email;
         this.element.querySelector('.__password').innerHTML = data.password;
     }
 
@@ -168,14 +159,6 @@ class RegisterModalError {
                                 Não foi possível criar seu acesso, entre em contato com o suporte
                             </p>
                         </span>
-                        <ul>
-                            <li>
-                                Canal: <a href="https://t.me/DTunnelMod" class="text-reset">DTunnelMod</a>
-                            </li>
-                            <li>
-                                Grupo: <a href="https://t.me/DTunnelModGroup" class="text-reset">DTunnelModGroup</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

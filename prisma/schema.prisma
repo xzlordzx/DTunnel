@@ -8,34 +8,31 @@ datasource db {
 }
 
 model User {
-  id                 String   @id @default(uuid())
-  username           String   @unique
+  id                 String      @id @default(uuid())
+  username           String      @unique
   password           String
-  email              String   @unique
-  created_at         DateTime @default(now())
-  updated_at         DateTime @updatedAt
-  app_text_version   Int      @default(1)
-  app_layout_version Int      @default(1)
-  app_config_version Int      @default(1)
-
-  cdn       Cdn[]
-  AppText   AppText[]
-  Category  Category[]
-  AppConfig AppConfig[]
-  AppLayout AppLayout[]
+  email              String      @unique
+  created_at         DateTime    @default(now())
+  updated_at         DateTime    @updatedAt
+  app_text_version   Int         @default(1)
+  app_layout_version Int         @default(1)
+  app_config_version Int         @default(1)
+  AppConfig          AppConfig[]
+  AppLayout          AppLayout[]
+  AppText            AppText[]
+  Category           Category[]
+  cdn                Cdn[]
 
   @@map("users")
 }
 
 model Cdn {
-  id     String @id @default(cuid())
-  name   String
-  url    String
-  status String
-
+  id      String @id @default(cuid())
+  name    String
+  url     String
+  status  String
   user_id String
-
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@map("cdn")
 }
@@ -50,8 +47,7 @@ model Category {
   updated_at DateTime    @updatedAt
   user_id    String
   Config     AppConfig[]
-
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user       User        @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@map("categories")
 }
@@ -93,9 +89,8 @@ model AppConfig {
   updated_at             DateTime @updatedAt
   url_check_user         String?
   user_id                String
-
-  user     User     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  category Category @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  category               Category @relation(fields: [category_id], references: [id], onDelete: Cascade)
+  user                   User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id])
   @@map("app_configs")
@@ -106,8 +101,7 @@ model AppText {
   label   String
   text    String
   user_id String
-
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id])
   @@map("app_texts")
@@ -118,23 +112,21 @@ model AppLayout {
   user_id        String
   is_active      Boolean            @default(false)
   layout_storage AppLayoutStorage[]
-
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user           User               @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id])
   @@map("app_layouts")
 }
 
 model AppLayoutStorage {
-  id            Int     @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   label         String
   name          String
   status        String
   type          String
   value         String?
   app_layout_id Int
-
-  app_layout AppLayout @relation(fields: [app_layout_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  app_layout    AppLayout @relation(fields: [app_layout_id], references: [id], onDelete: Cascade)
 
   @@map("app_layout_storages")
 }
